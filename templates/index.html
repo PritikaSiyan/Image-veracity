@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageVeracity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body style="font-family: 'Montserrat', sans-serif;">
+
+    <nav class="navbar">
+        <div class="logo">ImageVeracity</div>
+        <a href="/about" class="nav-button">About</a>
+    </nav>
+
+    <div class="container">
+        <h1>Deepfake Image Detector</h1>
+        <p class="subtitle">Upload an image to check whether it is Real or AI Generated</p>
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <label class="upload-box">
+                <input type="file" name="image" accept="image/*" required onchange="updateFilename(this)">
+                <span id="file-label">Click to upload image</span>
+            </label>
+
+            <button type="submit">Analyze Image</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>Result:</h2>
+            <p class="{{ result_class }}">{{ result }}</p>
+            <p class="confidence">Confidence: {{ confidence }}</p>
+        </div>
+        {% endif %}
+
+        {% if image_path %}
+        <div class="preview-image-container">
+            <h3>Uploaded Image:</h3>
+            <img src="{{ image_path }}" alt="Uploaded Image" class="preview-image">
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function updateFilename(input) {
+            const label = document.getElementById('file-label');
+            if (input.files && input.files.length > 0) {
+                label.textContent = `Selected: ${input.files[0].name}`;
+            } else {
+                label.textContent = "Click to upload image";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Model files
+*.h5
+*.ckpt
+*.pb
+*.tflite
+*.keras
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Virtual environment
+venv/
+env/
+
+# IDE and editor folders
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Flask uploads or generated images
+static/uploads/
+
+# Environment variables
+.env

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ImageVeracity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('index') }}" class="logo">ImageVeracity</a>
+    </nav>
+
+    <div class="container">
+        <h1>About ImageVeracity</h1>
+        <p class="about-description">
+            ImageVeracity is a web-based AI-powered application designed to distinguish between real and AI-generated images. 
+            As synthetic media continues to evolve, it becomes increasingly difficult to identify deepfakes and manipulated visuals. 
+            Our tool leverages state-of-the-art deep learning models trained on diverse datasets to analyze images and provide 
+            accurate predictions.
+        </p>
+
+        <p class="about-description">
+            The motivation behind ImageVeracity stems from the growing concern over misinformation and digital image manipulation. 
+            By offering a simple and accessible interface, we empower individuals, journalists, educators, and researchers to verify 
+            the authenticity of visual content.
+        </p>
+
+        <p class="about-description">
+            This project integrates technologies such as TensorFlow, Flask, and MobileNetV2, optimized for performance and accuracy. 
+            ImageVeracity aims to raise awareness and provide practical tools in the fight against AI-generated disinformation.
+        </p>
+
+        <p class="about-description">
+            Whether you're curious about image authenticity or concerned about digital trust, ImageVeracity is your gateway to a more 
+            transparent visual internet. Our goal is to make AI explainability accessible and to highlight the line between creative 
+            generation and harmful manipulation.
+        </p>
+
+        <p class="about-description">
+            In future iterations, ImageVeracity will include features such as historical metadata scanning, region-based anomaly detection, 
+            and side-by-side AI vs. human analysis visualizations. We're committed to transparency, education, and supporting ethical AI practices.
+        </p>
+
+        <p class="about-description">
+            This platform was built by developers and researchers passionate about protecting digital integrity. We believe in an open web where 
+            users can easily distinguish reality from fabrication using intuitive and trustworthy tools.
+        </p>
+    </div>
+</body>
+</html>
