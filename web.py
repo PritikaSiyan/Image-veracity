@@ -98,7 +98,6 @@ def ensure_model_on_disk():
     if MODEL_URL:
         logging.info(f"Model file not found at {MODEL_FULL_PATH}. Attempting download from MODEL_URL.")
         try:
-            # download to the expected path
             os.makedirs(os.path.dirname(MODEL_FULL_PATH), exist_ok=True)
             urllib.request.urlretrieve(MODEL_URL, MODEL_FULL_PATH)
             logging.info("Model downloaded successfully.")
@@ -121,7 +120,6 @@ def get_model():
         raise FileNotFoundError(f"Model not available at {MODEL_FULL_PATH}")
 
     try:
-        # import tensorflow/keras only when needed to avoid heavy import on module load
         import tensorflow as tf
         from tensorflow.keras.models import load_model
         logging.info(f"Loading model from {MODEL_FULL_PATH} ...")
@@ -159,7 +157,6 @@ def predict():
         img_path = os.path.join(upload_folder, filename)
         img_file.save(img_path)
 
-        # import image preprocessing here to avoid import-time tensorflow dependency
         from tensorflow.keras.preprocessing import image
         import numpy as np
 
@@ -167,7 +164,6 @@ def predict():
         img_array = image.img_to_array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
 
-        # get the model lazily
         model = get_model()
         prediction = model.predict(img_array)[0][0]
         confidence = prediction if prediction > 0.5 else 1 - prediction
@@ -194,11 +190,9 @@ def predict():
 
 @app.route("/health")
 def health():
-    """Simple health check to confirm model presence."""
     return jsonify({
         "model_path": MODEL_FULL_PATH,
         "model_exists": os.path.exists(MODEL_FULL_PATH),
-        "tensorflow_cpu_info": None  # get filled if tf import is possible
     })
 
 
