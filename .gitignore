@@ -8,7 +8,6 @@ __pycache__/
 *.ckpt
 *.pb
 *.tflite
-*.keras
 
 # Logs and temp files
 *.log
