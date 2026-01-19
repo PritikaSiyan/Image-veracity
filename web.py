@@ -169,10 +169,10 @@ def predict():
         confidence = prediction if prediction > 0.5 else 1 - prediction
 
         if prediction < 0.5:
-            label = "AI Generated (Deepfake)"
+            label = "Likely AI Generated (Deepfake)"
             result_class = "fake"
         else:
-            label = "Real Image"
+            label = "LikelyReal Image"
             result_class = "real"
 
         return render_template(
