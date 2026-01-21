@@ -172,7 +172,7 @@ def predict():
             label = "Likely AI Generated (Deepfake)"
             result_class = "fake"
         else:
-            label = "LikelyReal Image"
+            label = "Likely Real Image"
             result_class = "real"
 
         return render_template(
