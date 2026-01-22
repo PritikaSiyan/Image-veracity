@@ -14,7 +14,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    height: 80px;
+    height: 65px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
@@ -43,7 +43,7 @@ body {
 /* Container */
 .container {
     max-width: 800px;
-    margin: 60px auto;
+    margin: 90px auto;
     text-align: center;
     background-color: white;
     padding: 40px;
@@ -136,4 +136,12 @@ button[type="submit"]:hover {
     border-radius: 8px;
     border: 1px solid #ccc;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.disclaimer {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
 }

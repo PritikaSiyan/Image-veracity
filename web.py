@@ -68,7 +68,6 @@ def index():
 def about():
     return render_template("about.html")
 
-
 @app.route("/predict", methods=["POST"])
 def predict():
     if "image" not in request.files:
