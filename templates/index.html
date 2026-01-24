@@ -11,7 +11,11 @@
 
     <nav class="navbar">
         <div class="logo">ImageVeracity</div>
-        <a href="/about" class="nav-button">About</a>
+        
+        <div class="nav-links">
+        <a href="{{ url_for('about') }}" class="nav-button">About</a>
+        <a href="{{ url_for('terms') }}" class="nav-button">Terms and Conditions</a>
+        </div>
     </nav>
 
     <div class="container">

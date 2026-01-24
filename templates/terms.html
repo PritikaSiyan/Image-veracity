@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions - ImageVeracity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='terms.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+    <a href="{{ url_for('index') }}" class="logo">ImageVeracity</a>
+
+    <div class="nav-links">
+        <a href="{{ url_for('about') }}" class="nav-button">About</a>
+    </div>
+</nav>
+
+    <div class="container">
+        <h1>Terms and Conditions – ImageVeracity</h1>
+
+        <p>By using the ImageVeracity website, you agree to the following terms and conditions:</p>
+
+        <h2>1. Purpose of the Project</h2>
+        <p>ImageVeracity is an educational project developed to demonstrate how artificial intelligence can be used to detect whether an image is real or AI-generated. The results provided are for informational purposes only and should not be considered fully reliable or legally valid.</p>
+
+        <h2>2. Accuracy Disclaimer</h2>
+        <p>While the model is trained on datasets of real and fake images, predictions may not always be accurate. The system may perform poorly on images that do not contain faces or are outside the type of data it was trained on.</p>
+
+        <h2>3. User Responsibility</h2>
+        <p>Users are responsible for how they use the results. The creator of this project is not liable for decisions made based on the output of this tool.</p>
+
+        <h2>4. Uploaded Content</h2>
+        <p>Images uploaded by users are processed only for generating predictions. No guarantee is provided regarding long-term storage, privacy, or security of uploaded data on this demo platform.</p>
+
+        <h2>5. Non-commercial Use</h2>
+        <p>This project is intended for learning, demonstration, and portfolio purposes. It is not designed for commercial or professional verification use.</p>
+
+        <h2>6. Changes to the Project</h2>
+        <p>Features, functionality, and availability of the website may change over time as the project is updated or improved.</p>
+    </div>
+
+</body>
+</html>

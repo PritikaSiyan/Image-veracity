@@ -9,7 +9,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Configuration
 MODEL_FILENAME = os.environ.get("MODEL_PATH", "deepfake_mobilenet.keras")
-MODEL_URL = os.environ.get("MODEL_URL")  # optional: URL to download model if missing
+MODEL_URL = os.environ.get("MODEL_URL")  
 BASE_DIR = os.path.dirname(__file__)
 MODEL_FULL_PATH = os.path.join(BASE_DIR, MODEL_FILENAME)
 
@@ -67,6 +67,11 @@ def index():
 @app.route("/about")
 def about():
     return render_template("about.html")
+
+@app.route("/terms")
+def terms():
+    return render_template("terms.html")
+
 
 @app.route("/predict", methods=["POST"])
 def predict():

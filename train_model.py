@@ -7,9 +7,9 @@ from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCh
 from collections import Counter
 import kagglehub
 
-# -----------------------------
+
 # Load Dataset
-# -----------------------------
+
 DATASET_DIR = kagglehub.dataset_download("manjilkarki/deepfake-and-real-images")
 DATASET_DIR = os.path.join(DATASET_DIR, "Dataset")
 
@@ -17,16 +17,16 @@ TRAIN_DIR = os.path.join(DATASET_DIR, "Train")
 VAL_DIR = os.path.join(DATASET_DIR, "Validation")
 TEST_DIR = os.path.join(DATASET_DIR, "Test")
 
-# -----------------------------
+
 # Parameters
-# -----------------------------
+
 IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
 EPOCHS = 15
 
-# -----------------------------
+
 # Data Augmentation
-# -----------------------------
+
 train_datagen = ImageDataGenerator(
     rescale=1./255,
     rotation_range=20,
@@ -37,9 +37,9 @@ train_datagen = ImageDataGenerator(
 
 val_test_datagen = ImageDataGenerator(rescale=1./255)
 
-# -----------------------------
+
 # Data Generators
-# -----------------------------
+
 train_data = train_datagen.flow_from_directory(
     TRAIN_DIR,
     target_size=IMG_SIZE,
@@ -64,9 +64,9 @@ test_data = val_test_datagen.flow_from_directory(
 )
 print(train_data.class_indices)
 
-# -----------------------------
+
 # Class Weights
-# -----------------------------
+
 counter = Counter(train_data.classes)
 total = sum(counter.values())
 class_weight = {
@@ -75,9 +75,9 @@ class_weight = {
 }
 print("Class weights:", class_weight)
 
-# -----------------------------
+
 # Load MobileNetV2 base
-# -----------------------------
+
 base_model = tf.keras.applications.MobileNetV2(
     input_shape=(224, 224, 3),
     include_top=False,
@@ -87,9 +87,9 @@ base_model.trainable = True
 for layer in base_model.layers[:-50]:
     layer.trainable = False
 
-# -----------------------------
+
 # Build Model
-# -----------------------------
+
 model = tf.keras.Sequential([
     base_model,
     tf.keras.layers.GlobalAveragePooling2D(),
@@ -107,16 +107,16 @@ model.compile(
 
 model.summary()
 
-# -----------------------------
+
 # Callbacks
-# -----------------------------
+
 early_stop = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
 reduce_lr = ReduceLROnPlateau(monitor="val_loss", factor=0.3, patience=3, min_lr=1e-6)
 checkpoint = ModelCheckpoint("best_model.keras", monitor="val_loss", save_best_only=True)
 
-# -----------------------------
+
 # Train Model
-# -----------------------------
+
 history = model.fit(
     train_data,
     validation_data=val_data,
@@ -125,21 +125,21 @@ history = model.fit(
     callbacks=[early_stop, reduce_lr, checkpoint]
 )
 
-# -----------------------------
+
 # Evaluate on Test Data
-# -----------------------------
+
 loss, accuracy = model.evaluate(test_data)
 print(f"Test Accuracy: {accuracy:.4f}, Test Loss: {loss:.4f}")
 
-# -----------------------------
+
 # Save Final Model
-# -----------------------------
+
 model.save("deepfake_mobilenet_final.keras")
 print("Model saved as deepfake_mobilenet_final.keras")
 
-# -----------------------------
+
 # Visualization
-# -----------------------------
+
 plt.figure(figsize=(10, 4))
 plt.subplot(1, 2, 1)
 plt.plot(history.history["accuracy"], label="Train Accuracy")

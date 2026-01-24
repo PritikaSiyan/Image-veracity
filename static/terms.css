@@ -1,13 +1,10 @@
-/* about.css */
-
 body {
-    font-family: 'Montserrat', sans-serif;
     margin: 0;
-    padding: 0;
+    font-family: 'Montserrat', sans-serif;
     background-color: #f9f9f9;
-    color: #333;
 }
 
+/* Navbar */
 .navbar {
     background-color: #1e1e2f;
     display: flex;
@@ -20,9 +17,9 @@ body {
 }
 
 .logo {
+    color: white;
     font-size: 2rem;
     font-weight: 600;
-    color: #ffffff;
     text-decoration: none;
 }
 
@@ -39,15 +36,16 @@ body {
 }
 
 .nav-button:hover {
-    background-color: #e2e2e2;
+    background: #e6e6e6;
 }
 
 .nav-links {
-    align-items: center;
+    margin-left: auto;
     display: flex;
     gap: 10px;   
 }
 
+/* Main container */
 .container {
     max-width: 900px;
     margin: 3rem auto;
@@ -55,19 +53,26 @@ body {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    text-align: justify;
 }
 
-h1 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+
+.container h1 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
     color: #1e1e2f;
 }
 
-.about-description {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    text-align: justify;
+.container h2 {
+    font-size: 18px;
+    margin-top: 25px;
+    color: #1e1e2f;
+}
+
+.container p {
+    font-size: 16px;
+    line-height: 1.8;
     color: #444;
+    margin-top: 8px;
 }
